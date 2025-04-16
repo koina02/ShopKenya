@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "name": "Kikoy Wrap",
+    "price": 1200,
+    "image": "assets/products/kikoy.jpg",
+    "description": "Handwoven Kikoy wrap made in Mombasa.",
+    "category": "Fashion",
+    "store": "Swahili Threads"
+  },
+  {
+    "id": 2,
+    "name": "Kenyan Coffee Pack",
+    "price": 800,
+    "image": "assets/products/coffee.jpg",
+    "description": "Premium AA+ Arabica coffee from Nyeri.",
+    "category": "Food & Beverage",
+    "store": "Bean Republic"
+  },
+  {
+    "id": 3,
+    "name": "Maasai Beaded Bracelet",
+    "price": 400,
+    "image": "assets/products/bracelet.jpg",
+    "description": "Colorful handmade Maasai bracelet.",
+    "category": "Jewelry",
+    "store": "Nairobi Crafts"
+  }
+]
