@@ -15,7 +15,8 @@
       .then(res => res.text())
       .then(data => {
         document.getElementById('navbar-placeholder').innerHTML = data;
-      });
+      })
+      .catch(error => console.error('Error loading navbar:', error));
   </script>
 
   <!-- Products Section -->
@@ -32,13 +33,134 @@
     <div class="cart-items">
       <!-- Cart items will populate here -->
     </div>
-    <button class="checkout-btn">Checkout</button>
+    <button class="checkout-btn">Proceed to Checkout</button>
     <button class="close-cart-btn">Close Cart</button>
+    <div class="order-summary">
+      <p>Total: <span id="cart-total">$0.00</span></p>
+    </div>
+  </div>
+
+  <!-- Communication Section -->
+  <div id="communication-section" class="communication-section">
+    <h2>Communicate with Seller</h2>
+    <textarea id="message-box" placeholder="Send a message to the seller..."></textarea>
+    <button id="send-message-btn">Send Message</button>
+    <div id="message-feedback"></div>
+  </div>
+
+  <!-- Delivery & Payment Tracking -->
+  <div id="tracking-section" class="tracking-section">
+    <h2>Track Your Order</h2>
+    <p>Enter your Order ID to track delivery status:</p>
+    <input type="text" id="order-id" placeholder="Enter Order ID">
+    <button id="track-order-btn">Track Order</button>
+    <div id="order-status"></div>
   </div>
 
   <!-- JavaScript for Product and Cart Logic -->
   <script src="products.js"></script>
-  
+
+  <script>
+    // Cart functionality
+    let cart = [];
+    const cartTotal = document.getElementById('cart-total');
+    const cartSidebar = document.querySelector('.cart-sidebar');
+    const closeCartBtn = document.querySelector('.close-cart-btn');
+    const checkoutBtn = document.querySelector('.checkout-btn');
+    const productList = document.getElementById('product-list');
+
+    // Fetch products dynamically and display them
+    fetch('products.json')
+      .then(response => response.json())
+      .then(products => {
+        products.forEach(product => {
+          const productCard = document.createElement('div');
+          productCard.className = 'product-card';
+          productCard.innerHTML = `
+            <img src="${product.image}" alt="${product.name}">
+            <h3>${product.name}</h3>
+            <p>${product.description}</p>
+            <p>$${product.price}</p>
+            <button class="add-to-cart-btn" data-id="${product.id}" data-price="${product.price}">Add to Cart</button>
+          `;
+          productList.appendChild(productCard);
+        });
+
+        // Add to Cart functionality
+        const addToCartBtns = document.querySelectorAll('.add-to-cart-btn');
+        addToCartBtns.forEach(btn => {
+          btn.addEventListener('click', () => {
+            const productId = btn.getAttribute('data-id');
+            const productPrice = parseFloat(btn.getAttribute('data-price'));
+            const product = { id: productId, price: productPrice };
+
+            cart.push(product);
+            updateCart();
+          });
+        });
+      })
+      .catch(error => console.error('Error loading products:', error));
+
+    // Update Cart
+    function updateCart() {
+      const cartItemsContainer = document.querySelector('.cart-items');
+      cartItemsContainer.innerHTML = '';
+      let total = 0;
+
+      cart.forEach(item => {
+        total += item.price;
+        const cartItem = document.createElement('div');
+        cartItem.className = 'cart-item';
+        cartItem.innerHTML = `
+          <p>Product ID: ${item.id} - $${item.price}</p>
+        `;
+        cartItemsContainer.appendChild(cartItem);
+      });
+
+      cartTotal.textContent = `$${total.toFixed(2)}`;
+    }
+
+    // Show/Hide Cart Sidebar
+    checkoutBtn.addEventListener('click', () => {
+      cartSidebar.classList.add('active');
+    });
+
+    closeCartBtn.addEventListener('click', () => {
+      cartSidebar.classList.remove('active');
+    });
+
+    // Handle Message Sending
+    const sendMessageBtn = document.getElementById('send-message-btn');
+    const messageBox = document.getElementById('message-box');
+    const messageFeedback = document.getElementById('message-feedback');
+
+    sendMessageBtn.addEventListener('click', () => {
+      const message = messageBox.value;
+      if (message.trim()) {
+        // Simulate sending message to seller
+        messageFeedback.textContent = 'Message sent successfully!';
+        messageBox.value = '';
+      } else {
+        messageFeedback.textContent = 'Please enter a message!';
+      }
+    });
+
+    // Track Order Status
+    const trackOrderBtn = document.getElementById('track-order-btn');
+    const orderIdInput = document.getElementById('order-id');
+    const orderStatus = document.getElementById('order-status');
+
+    trackOrderBtn.addEventListener('click', () => {
+      const orderId = orderIdInput.value;
+      if (orderId) {
+        // Simulate fetching order status
+        orderStatus.textContent = `Order ${orderId} is being processed. Estimated delivery: 3 days.`;
+      } else {
+        orderStatus.textContent = 'Please enter a valid Order ID.';
+      }
+    });
+  </script>
+
 </body>
 </html>
 

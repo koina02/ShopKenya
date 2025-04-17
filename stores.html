@@ -10,11 +10,11 @@
   <!-- Navbar -->
   <div id="navbar-placeholder"></div>
   <script>
+    // Fetch and insert the navbar
     fetch('navbar.html')
       .then(res => res.text())
-      .then(data => {
-        document.getElementById('navbar-placeholder').innerHTML = data;
-      });
+      .then(data => document.getElementById('navbar-placeholder').innerHTML = data)
+      .catch(error => console.error('Error loading navbar:', error));
   </script>
 
   <!-- Header -->
@@ -27,11 +27,11 @@
   <!-- Footer -->
   <div id="footer"></div>
   <script>
+    // Fetch and insert the footer
     fetch('footer.html')
       .then(res => res.text())
-      .then(data => {
-        document.getElementById('footer').innerHTML = data;
-      });
+      .then(data => document.getElementById('footer').innerHTML = data)
+      .catch(error => console.error('Error loading footer:', error));
   </script>
 
   <!-- Store Listing Script -->
@@ -39,36 +39,40 @@
     document.addEventListener('DOMContentLoaded', () => {
       fetch('stores.json')
         .then(response => response.json())
-        .then(stores => {
-          const storeList = document.getElementById('store-list');
-          stores.forEach(store => {
-            const card = document.createElement('div');
-            card.className = 'store-card';
-
-            card.innerHTML = `
-              <img src="${store.logo}" alt="${store.name} Logo" class="store-logo">
-              <h3>${store.name}</h3>
-              <p>${store.description}</p>
-              <div class="store-rating">
-                <span>${'⭐'.repeat(store.rating)}${store.rating < 5 ? '☆' : ''}</span>
-                <small>${store.reviews} reviews</small>
-              </div>
-              <div class="store-actions">
-                <a href="store.html?id=${store.id}" class="btn primary-btn">Visit Store</a>
-                <a href="mailto:${store.email}" class="btn secondary-btn">Contact</a>
-              </div>
-              <div class="product-carousel">
-                ${store.featuredProducts.map(img => `<img src="${img}" alt="Featured product from ${store.name}">`).join('')}
-              </div>
-            `;
-            storeList.appendChild(card);
-          });
-        })
+        .then(stores => renderStores(stores))
         .catch(error => {
           console.error('Error loading stores:', error);
           document.getElementById('store-list').innerHTML = "<p>Failed to load stores. Please try again later.</p>";
         });
     });
+
+    const renderStores = (stores) => {
+      const storeList = document.getElementById('store-list');
+      stores.forEach(store => {
+        const card = document.createElement('div');
+        card.className = 'store-card';
+        
+        const starRating = '⭐'.repeat(store.rating) + (store.rating < 5 ? '☆' : '');
+
+        card.innerHTML = `
+          <img src="${store.logo}" alt="${store.name} Logo" class="store-logo">
+          <h3>${store.name}</h3>
+          <p>${store.description}</p>
+          <div class="store-rating">
+            <span>${starRating}</span>
+            <small>${store.reviews} reviews</small>
+          </div>
+          <div class="store-actions">
+            <a href="store.html?id=${store.id}" class="btn primary-btn">Visit Store</a>
+            <a href="mailto:${store.email}" class="btn secondary-btn">Contact</a>
+          </div>
+          <div class="product-carousel">
+            ${store.featuredProducts.map(img => `<img src="${img}" alt="Featured product from ${store.name}">`).join('')}
+          </div>
+        `;
+        storeList.appendChild(card);
+      });
+    };
   </script>
 
 </body>
