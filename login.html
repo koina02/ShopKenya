@@ -1,32 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Login</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  
-<nav>
-  <div style="display: flex; align-items: center; gap: 1rem;">
-    <img src="assets/images/logo.png" alt="ShopKenya" style="height: 40px; border-radius: 5px;">
-    <a href="index.html" style="font-size: 1.5rem; font-weight: bold;">ShopKenya</a>
+
+<!-- Navigation Bar -->
+<nav class="navbar">
+  <div class="logo">
+    <img src="assets/ShopKen.png" alt="ShopKenya Logo" />
   </div>
-  <div style="display: flex; flex-wrap: wrap;">
-    <a href="index.html">Home</a>
-    <a href="stores.html">Stores</a>
-    <a href="products.html">Products</a>
-    <a href="support.html">Support</a>
-    <a href="login.html">Login</a>
-  </div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="stores.html">Stores</a></li>
+    <li><a href="products.html">Products</a></li>
+    <li><a href="support.html">Support</a></li>
+    <li><a href="login.html" class="active">Login</a></li>
+  </ul>
 </nav>
 
-  <div class="container">
-    <h2>Login</h2><form><input type='text' placeholder='Username'><br><input type='password' placeholder='Password'><br><button>Login</button></form>
-  </div>
-  
-<footer>
+<!-- Login Form -->
+<div class="container">
+  <h2>Login</h2>
+  <form>
+    <input type="text" placeholder="Username" /><br />
+    <input type="password" placeholder="Password" /><br />
+    <button type="submit" class="primary-btn">Login</button>
+  </form>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
   <p>&copy; 2025 <strong>ShopKenya</strong>. Built with hustle in Kenya. | 
     <a href="privacy.html">Privacy</a> • 
     <a href="terms.html">Terms</a> • 
