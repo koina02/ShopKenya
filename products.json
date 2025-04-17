@@ -26,4 +26,33 @@
     "category": "Jewelry",
     "store": "Nairobi Crafts"
   }
+  {
+    "id": 4,
+    "name": "Kenyan Coffee Beans",
+    "price": 1200,
+    "category": "Food & Drink",
+    "image": "assets/images/coffee.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Chic Ankara Tote Bag",
+    "price": 2500,
+    "category": "Fashion",
+    "image": "assets/images/totebag.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Digital Marketing eBook",
+    "price": 500,
+    "category": "Digital Products",
+    "image": "assets/images/ebook.jpg"
+  },
+  {
+    "id": 7,
+    "name": "Customized Maasai Blanket",
+    "price": 3000,
+    "category": "Fashion",
+    "image": "assets/images/blanket.jpg"
+  }
 ]
+
