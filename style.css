@@ -19,15 +19,16 @@ body {
   align-items: center;
   padding: 1rem 2rem;
 }
-
+/* Logo style */
 .logo {
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: bold;
   color: var(--primary);
 }
 
-.logo span {
-  color: var(--light);
+.logo img {
+  height: 50px;  /* Adjust this based on the logo size */
+  width: auto;
 }
 
 .nav-links {
