@@ -8,22 +8,37 @@
 </head>
 <body>
 
-<div id="navbar-placeholder"></div>
-<script>
-  fetch('navbar.html')
-    .then(res => res.text())
-    .then(data => {
-      document.getElementById('navbar-placeholder').innerHTML = data;
-    });
-</script>
+  <!-- Navbar Section (dynamically loaded) -->
+  <div id="navbar-placeholder"></div>
+  <script>
+    fetch('navbar.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('navbar-placeholder').innerHTML = data;
+      });
+  </script>
 
-<!-- Products Section -->
-<div class="container">
-  <h2>Our Products</h2>
-  <div id="product-list" class="product-grid"></div>
-</div>
+  <!-- Products Section -->
+  <div class="container">
+    <h2>Our Products</h2>
+    <div id="product-list" class="product-grid">
+      <!-- Products will dynamically populate here -->
+    </div>
+  </div>
 
-<script src="products.js"></script>
+  <!-- Cart Sidebar -->
+  <div class="cart-sidebar">
+    <h2>Your Cart</h2>
+    <div class="cart-items">
+      <!-- Cart items will populate here -->
+    </div>
+    <button class="checkout-btn">Checkout</button>
+    <button class="close-cart-btn">Close Cart</button>
+  </div>
 
+  <!-- JavaScript for Product and Cart Logic -->
+  <script src="products.js"></script>
+  
 </body>
 </html>
+
