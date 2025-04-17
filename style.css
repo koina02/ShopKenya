@@ -1,173 +1,164 @@
-/* Base Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
+/* General Styles */
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.6;
-  background-color: #f8f9fa;
-  color: #222;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    color: #333;
 }
 
-/* Container */
-.container {
-  max-width: 1200px;
-  margin: auto;
-  padding: 1.5rem;
+h1, h2, h3 {
+    color: #1D2955;
 }
 
-/* Navbar */
-nav {
-  background-color: #1d2955;
-  color: #fff;
-  padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
+/* Navbar Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #F1EEE4;
+    border-bottom: 2px solid #1D2955;
 }
 
-nav a {
-  color: #fff;
-  text-decoration: none;
-  margin: 0 1rem;
-  font-weight: 500;
+.navbar-brand a {
+    font-size: 24px;
+    font-weight: bold;
+    color: #1D2955;
+    text-decoration: none;
 }
 
-nav a:hover {
-  text-decoration: underline;
+.navbar-links a {
+    color: #000;
+    text-decoration: none;
+    padding: 10px 15px;
+    margin: 0 10px;
+    transition: background-color 0.3s;
 }
 
-/* Hero Banner */
+.navbar-links a:hover {
+    background-color: #1D2955;
+    color: #fff;
+}
+
+/* Hero Section */
 .hero {
-  background: url('assets/images/kenya-hero.jpg') center/cover no-repeat;
-  color: #fff;
-  padding: 5rem 2rem;
-  text-align: center;
+    background-color: #1D2955;
+    color: #fff;
+    text-align: center;
+    padding: 100px 20px;
 }
 
 .hero h1 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
+    font-size: 2.5em;
 }
 
-.hero p {
-  font-size: 1.2rem;
-  max-width: 600px;
-  margin: auto;
-  margin-bottom: 2rem;
+.hero .cta-button {
+    background-color: #1D2955;
+    color: #fff;
+    padding: 15px 30px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
 }
 
-.hero .btn {
-  padding: 0.75rem 2rem;
-  background-color: #ffcc00;
-  color: #1d2955;
-  font-weight: bold;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  text-transform: uppercase;
-}
-
-.hero .btn:hover {
-  background-color: #e6b800;
-}
-
-/* Product Cards */
-.products-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
-}
-
-.product-card {
-  background-color: #fff;
-  padding: 1rem;
-  border-radius: 10px;
-  border: 1px solid #ddd;
-  transition: box-shadow 0.3s ease;
-  text-align: center;
-}
-
-.product-card img {
-  max-width: 100%;
-  border-radius: 5px;
-  height: 180px;
-  object-fit: cover;
-}
-
-.product-card h3 {
-  margin: 0.8rem 0 0.5rem;
-}
-
-.product-card p {
-  color: #1d2955;
-  font-weight: bold;
-}
-
-.product-card button {
-  padding: 0.5rem 1rem;
-  background-color: #1d2955;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  margin-top: 0.5rem;
-  cursor: pointer;
-}
-
-.product-card button:hover {
-  background-color: #142043;
-}
-
-/* Search & Filters */
-#searchInput, #categoryFilter {
-  padding: 0.5rem;
-  margin: 1rem 0;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  width: 100%;
-  max-width: 300px;
+.hero .cta-button:hover {
+    background-color: #100C24;
 }
 
 /* Footer */
-footer {
-  background-color: #1d2955;
-  color: white;
-  padding: 2rem;
-  text-align: center;
-  font-size: 0.9rem;
-  margin-top: 4rem;
+.footer {
+    background-color: #100C24;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
 }
 
-footer a {
-  color: #ffcc00;
-  text-decoration: none;
+.footer-content p {
+    margin: 0;
 }
 
-footer a:hover {
-  text-decoration: underline;
+/* Support Section */
+.support {
+    padding: 50px 20px;
+    background-color: #F1EEE4;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .hero h1 {
-    font-size: 2rem;
-  }
+.support h2 {
+    font-size: 2em;
+    color: #1D2955;
+}
 
-  .hero p {
-    font-size: 1rem;
-  }
+.support-options {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
 
-  nav {
+.support-item {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    width: 30%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.support-item h3 {
+    font-size: 1.2em;
+    color: #1D2955;
+}
+
+/* Contact Form */
+.contact form {
+    display: flex;
     flex-direction: column;
-    align-items: flex-start;
-  }
+    gap: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
 
-  nav a {
-    margin: 0.5rem 0;
-  }
+.contact form input,
+.contact form textarea {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.contact form button {
+    background-color: #1D2955;
+    color: #fff;
+    padding: 15px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.contact form button:hover {
+    background-color: #100C24;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .navbar-links {
+        display: none;
+    }
+
+    .hero h1 {
+        font-size: 1.8em;
+    }
+
+    .support-options {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .support-item {
+        width: 100%;
+    }
+
+    .contact form {
+        width: 90%;
+    }
 }
