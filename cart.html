@@ -1,36 +1,27 @@
+<!-- cart.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>ShopKenya | Cart</title>
+  <title>Your Cart - ShopKenya</title>
   <link rel="stylesheet" href="style.css">
-  <script defer src="js/cart.js"></script>
 </head>
 <body>
 
-  <!-- Navbar -->
-  <header>
-    <div class="logo">ShopKenya</div>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="store.html">Store</a></li>
-        <li><a href="cart.html">Cart</a></li>
-      </ul>
-    </nav>
-  </header>
+<div id="navbar-placeholder"></div>
+<script>
+  fetch('navbar.html')
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById('navbar-placeholder').innerHTML = data;
+    });
+</script>
 
-  <!-- Cart Content -->
-  <section class="cart">
-    <h2>Your Cart</h2>
-    <div id="cartItems" class="cart-items"></div>
-    <h3>Total: <span id="totalPrice">KES 0</span></h3>
-  </section>
+<div class="container">
+  <h2>Your Cart</h2>
+  <div id="cart-items"></div>
+</div>
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 ShopKenya. Made with love in Nairobi.</p>
-  </footer>
-
+<script src="cart.js"></script>
 </body>
 </html>

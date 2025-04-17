@@ -1,38 +1,27 @@
+<!-- terms.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Terms</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Terms & Conditions - ShopKenya</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  
-<nav>
-  <div style="display: flex; align-items: center; gap: 1rem;">
-    <img src="assets/images/logo.png" alt="ShopKenya Logo" style="height: 40px; border-radius: 5px;">
-    <a href="index.html" style="font-size: 1.5rem; font-weight: bold;">ShopKenya</a>
-  </div>
-  <div style="display: flex; flex-wrap: wrap;">
-    <a href="index.html">Home</a>
-    <a href="stores.html">Stores</a>
-    <a href="products.html">Products</a>
-    <a href="support.html">Support</a>
-    <a href="login.html">Login</a>
-  </div>
-</nav>
 
-  <div class="container">
-    <h2>Terms & Conditions</h2><p>By using ShopKenya, you agree to our terms of service outlined here.</p>
-  </div>
-  
-<footer>
-  <p>&copy; 2025 <strong>ShopKenya</strong>. Built with hustle in Kenya. | 
-    <a href="privacy.html">Privacy</a> • 
-    <a href="terms.html">Terms</a> • 
-    <a href="contact.html">Contact</a>
-  </p>
-</footer>
+<div id="navbar-placeholder"></div>
+<script>
+  fetch('navbar.html')
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById('navbar-placeholder').innerHTML = data;
+    });
+</script>
+
+<div class="container">
+  <h2>Terms & Conditions</h2>
+  <p>Read our terms and conditions for using ShopKenya services.</p>
+</div>
 
 </body>
 </html>

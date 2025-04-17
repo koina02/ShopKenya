@@ -1,48 +1,27 @@
+<!-- store.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>ShopKenya | Store</title>
+  <title>Store - ShopKenya</title>
   <link rel="stylesheet" href="style.css">
-  <script defer src="js/main.js"></script>
 </head>
 <body>
 
-  <!-- Navbar -->
-  <header>
-    <div class="logo">
-      <img src="assets/ShopKen.png" alt="Shop Kenya Logo">
-    </div>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="stores.html">Stores</a></li>
-        <li><a href="products.html">Products</a></li>
-        <li><a href="jobs.html">Remote Jobs</a></li>
-        <li><a href="cart.html">Cart</a></li>
-        <li><a href="login.html">Login</a></li>
-      </ul>
-    </nav>
-  </header>
+<div id="navbar-placeholder"></div>
+<script>
+  fetch('navbar.html')
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById('navbar-placeholder').innerHTML = data;
+    });
+</script>
 
-  <!-- Search + Filters -->
-  <section class="filters">
-    <input type="text" id="searchInput" placeholder="Search products...">
-    <select id="categoryFilter">
-      <option value="">All Categories</option>
-      <option value="Fashion">Fashion</option>
-      <option value="Food & Beverage">Food & Beverage</option>
-      <option value="Jewelry">Jewelry</option>
-    </select>
-  </section>
-
-  <!-- Product Grid -->
-  <section id="productGrid" class="product-grid"></section>
-
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 ShopKenya. Made with love in Nairobi.</p>
-  </footer>
+<div class="container">
+  <h2>Shop in Our Store</h2>
+  <p>Explore the best deals from our collection.</p>
+  <!-- Store items go here -->
+</div>
 
 </body>
 </html>

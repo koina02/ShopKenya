@@ -1,55 +1,25 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ShopKenya - Connecting Kenyan Businesses & Freelancers</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="assets/ShopKen.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ShopKenya - Home</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="navbar">
-    <div class="logo">
-      ShopKenya
-    </div>
-    <nav>
-      <ul class="nav-links">
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="stores.html">Stores</a></li>
-        <li><a href="products.html">Products</a></li>
-        <li><a href="jobs.html">Remote Jobs</a></li>
-        <li><a href="cart.html">Cart</a></li>
-        <li><a href="login.html">Login</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <section class="hero">
-    <div class="hero-text">
-      <h1>Welcome to ShopKenya</h1>
-      <p>Where local businesses meet the digital economy.</p>
-      <a href="stores.html" class="btn primary-btn">Explore Stores</a>
-      <a href="jobs.html" class="btn secondary-btn">Find Work</a>
-    </div>
-  </section>
+<div id="navbar-placeholder"></div>
+<script>
+  fetch('navbar.html')
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById('navbar-placeholder').innerHTML = data;
+    });
+</script>
 
-  <section class="features">
-    <div class="feature">
-      <h3>Local Stores</h3>
-      <p>Shop products from Kenyan retailers & wholesalers across all counties.</p>
-    </div>
-    <div class="feature">
-      <h3>Freelance Jobs</h3>
-      <p>Access or post remote jobs in IT, marketing, design, and admin support.</p>
-    </div>
-    <div class="feature">
-      <h3>Secure Payments</h3>
-      <p>Coming soon: Seamless MPesa integration for safe, instant checkout.</p>
-    </div>
-  </section>
+<!-- Rest of your homepage content -->
+<!-- Hero, features, etc. -->
 
-  <footer class="footer">
-    <p>&copy; 2025 ShopKenya. All Rights Reserved. | <a href="privacy.html">Privacy</a> | <a href="terms.html">Terms</a></p>
-  </footer>
 </body>
 </html>

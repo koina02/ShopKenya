@@ -1,1 +1,26 @@
-<a href="jobs.html">Remote Jobs</a>
+<!-- Jobs.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Jobs - ShopKenya</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="navbar-placeholder"></div>
+<script>
+  fetch('navbar.html')
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById('navbar-placeholder').innerHTML = data;
+    });
+</script>
+
+<div class="container">
+  <h2>Job Openings</h2>
+  <p>We’re building the future of eCommerce. Join the movement.</p>
+</div>
+
+</body>
+</html>
