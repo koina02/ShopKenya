@@ -313,7 +313,52 @@ body {
   color: var(--primary);
 }
 
-/* MEDIA QUERIES */
+/* ADD-ON BLOCK */
+.addon-block {
+  background-color: var(--primary);
+  color: var(--dark);
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 900px;
+  box-shadow: 0 8px 16px var(--shadow-hover);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  transition: transform var(--transition-duration);
+}
+
+.addon-block:hover {
+  transform: translateY(-5px);
+}
+
+.addon-content {
+  flex: 1 1 60%;
+}
+
+.addon-content h2 {
+  margin: 0 0 1rem;
+  font-size: 2rem;
+}
+
+.addon-content p {
+  font-size: 1rem;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.addon-action {
+  flex: 1 1 30%;
+  text-align: right;
+}
+
+.addon-action .btn {
+  margin-top: 1rem;
+}
+
+/* RESPONSIVE QUERIES */
 @media (max-width: 768px) {
   .navbar {
     flex-direction: column;
@@ -342,6 +387,15 @@ body {
   .store-card {
     width: 80%;
   }
+
+  .addon-block {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .addon-action {
+    text-align: center;
+  }
 }
 
 /* ACCESSIBILITY */
@@ -350,5 +404,51 @@ button:focus,
 input:focus {
   outline: 3px solid var(--primary);
   outline-offset: 2px;
+}
+
+/* JOB CARD */
+.job-card {
+  background: white;
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  box-shadow: 0 0 10px var(--shadow-light);
+  max-width: 800px;
+  margin: 2rem auto;
+}
+
+.company-logo {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.job-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.job-summary {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.summary-item {
+  background: var(--grey-light);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+}
+
+.apply-btn {
+  background: var(--primary);
+  color: var(--dark);
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+  font-weight: bold;
+  text-decoration: none;
 }
 

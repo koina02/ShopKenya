@@ -7,92 +7,69 @@
 </head>
 <body>
 
-<!-- Inject navbar -->
-<div id="navbar-placeholder"></div>
-<script>
-  fetch('navbar.html')
-    .then(res => res.text())
-    .then(data => {
-      document.getElementById('navbar-placeholder').innerHTML = data;
-    });
-</script>
-
-<!-- Partner Stores Section -->
-<div class="container">
-  <h2>Partner Stores</h2>
-  <p>Explore amazing local and digital shops partnering with ShopKenya.</p>
-
-  <div id="store-list" class="store-grid"></div>
-</div>
-
-<div class="store-section">
-  <h2>Explore Our Stores</h2>
-  <div class="store-grid">
-    <div class="store-card">
-      <div class="store-logo">
-        <img src="store-logo.jpg" alt="Store Logo">
-      </div>
-      <div class="store-info">
-        <h3>Store Name</h3>
-        <p>Tagline or Description</p>
-        <div class="store-rating">
-          <span>⭐⭐⭐⭐☆</span>
-          <small>150 reviews</small>
-        </div>
-        <div class="store-actions">
-          <a href="#" class="btn-primary">Visit Store</a>
-          <a href="#" class="btn-secondary">Contact</a>
-        </div>
-      </div>
-      <div class="store-products">
-        <div class="product-carousel">
-          <!-- Optional carousel for featured products -->
-          <img src="featured-product.jpg" alt="Product">
-          <img src="featured-product-2.jpg" alt="Product">
-        </div>
-      </div>
-    </div>
-    <!-- Repeat for other stores -->
-  </div>
-</div>
-
-<!-- Inject footer -->
-<div id="footer"></div>
-<script>
-  fetch('footer.html')
-    .then(res => res.text())
-    .then(data => {
-      document.getElementById('footer').innerHTML = data;
-    });
-</script>
-
-<!-- Store listing script -->
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    fetch('stores.json')
-      .then(response => response.json())
-      .then(stores => {
-        const storeList = document.getElementById('store-list');
-        stores.forEach(store => {
-          const storeCard = document.createElement('div');
-          storeCard.className = 'store-card';
-
-          storeCard.innerHTML = `
-            <img src="${store.logo}" alt="${store.name}" class="store-logo">
-            <h3>${store.name}</h3>
-            <p>${store.description}</p>
-            <a href="store.html?id=${store.id}" class="store-link">Visit Store</a>
-          `;
-
-          storeList.appendChild(storeCard);
-        });
-      })
-      .catch(error => {
-        console.error('Error loading stores:', error);
-        document.getElementById('store-list').innerHTML = "<p>Failed to load stores.</p>";
+  <!-- Navbar -->
+  <div id="navbar-placeholder"></div>
+  <script>
+    fetch('navbar.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('navbar-placeholder').innerHTML = data;
       });
-  });
-</script>
+  </script>
+
+  <!-- Header -->
+  <div class="container">
+    <h2>Partner Stores</h2>
+    <p>Explore amazing local and digital shops partnering with ShopKenya.</p>
+    <div id="store-list" class="store-grid"></div>
+  </div>
+
+  <!-- Footer -->
+  <div id="footer"></div>
+  <script>
+    fetch('footer.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('footer').innerHTML = data;
+      });
+  </script>
+
+  <!-- Store Listing Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      fetch('stores.json')
+        .then(response => response.json())
+        .then(stores => {
+          const storeList = document.getElementById('store-list');
+          stores.forEach(store => {
+            const card = document.createElement('div');
+            card.className = 'store-card';
+
+            card.innerHTML = `
+              <img src="${store.logo}" alt="${store.name} Logo" class="store-logo">
+              <h3>${store.name}</h3>
+              <p>${store.description}</p>
+              <div class="store-rating">
+                <span>${'⭐'.repeat(store.rating)}${store.rating < 5 ? '☆' : ''}</span>
+                <small>${store.reviews} reviews</small>
+              </div>
+              <div class="store-actions">
+                <a href="store.html?id=${store.id}" class="btn primary-btn">Visit Store</a>
+                <a href="mailto:${store.email}" class="btn secondary-btn">Contact</a>
+              </div>
+              <div class="product-carousel">
+                ${store.featuredProducts.map(img => `<img src="${img}" alt="Featured product from ${store.name}">`).join('')}
+              </div>
+            `;
+            storeList.appendChild(card);
+          });
+        })
+        .catch(error => {
+          console.error('Error loading stores:', error);
+          document.getElementById('store-list').innerHTML = "<p>Failed to load stores. Please try again later.</p>";
+        });
+    });
+  </script>
 
 </body>
 </html>

@@ -1,20 +1,22 @@
 [
   {
-    "id": 1,
-    "name": "Swahili Threads",
-    "description": "Authentic East African fashion with a modern twist.",
-    "logo": "assets/images/swahili-threads-logo.png"
+    "id": "001",
+    "name": "Nairobi Wearhouse",
+    "description": "Trendy local fashion hub",
+    "logo": "nairobi-logo.jpg",
+    "email": "info@nairobiwearhouse.ke",
+    "rating": 4,
+    "reviews": 150,
+    "featuredProducts": ["product1.jpg", "product2.jpg"]
   },
   {
-    "id": 2,
-    "name": "Bean Republic",
-    "description": "Finest Kenyan coffee direct from Nyeri hills.",
-    "logo": "assets/images/bean-republic-logo.png"
-  },
-  {
-    "id": 3,
-    "name": "Nairobi Crafts",
-    "description": "Handmade jewelry and crafts from Nairobi’s heart.",
-    "logo": "assets/images/nairobi-crafts-logo.png"
+    "id": "002",
+    "name": "GadgetFlow KE",
+    "description": "Your tech plug",
+    "logo": "gadget-logo.jpg",
+    "email": "support@gadgetflow.co.ke",
+    "rating": 5,
+    "reviews": 300,
+    "featuredProducts": ["gadget1.jpg", "gadget2.jpg"]
   }
 ]
