@@ -1,20 +1,36 @@
 document.addEventListener('DOMContentLoaded', () => {
   fetch('products.json')
-    .then(response => response.json())
+    .then(response => {
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+      return response.json();
+    })
     .then(products => {
       const productList = document.getElementById('product-list');
+      if (!productList) return; // Prevents script from running on pages without #product-list
+
+      productList.innerHTML = ''; // Clear existing content if any
+
       products.forEach(product => {
         const productCard = document.createElement('div');
         productCard.className = 'product-card';
 
+        const {
+          name = 'Unnamed Product',
+          price = 'N/A',
+          image = 'assets/images/placeholder.jpg',
+          description = 'No description available.',
+          category = 'Uncategorized',
+          store = 'Unknown Store'
+        } = product;
+
         productCard.innerHTML = `
-          <img src="${product.image}" alt="${product.name}" class="product-image">
-          <h3>${product.name}</h3>
-          <p><strong>KES ${product.price}</strong></p>
-          <p>${product.description}</p>
+          <img src="${image}" alt="${name}" class="product-image">
+          <h3>${name}</h3>
+          <p><strong>KES ${price}</strong></p>
+          <p>${description}</p>
           <p class="product-meta">
-            <span>Category: ${product.category}</span><br>
-            <span>Store: ${product.store}</span>
+            <span>Category: ${category}</span><br>
+            <span>Store: ${store}</span>
           </p>
         `;
 
@@ -23,6 +39,9 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     .catch(error => {
       console.error('Error loading products:', error);
-      document.getElementById('product-list').innerHTML = "<p>Failed to load products.</p>";
+      const productList = document.getElementById('product-list');
+      if (productList) {
+        productList.innerHTML = "<p>🚫 Failed to load products. Please try again later.</p>";
+      }
     });
 });

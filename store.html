@@ -2,13 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Store - ShopKenya</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- Inject navbar -->
+<!-- Navbar -->
 <div id="navbar-placeholder"></div>
 <script>
   fetch('navbar.html')
@@ -18,18 +17,14 @@
     });
 </script>
 
-<!-- Store Section -->
+<!-- Store Content -->
 <div class="container">
-  <h2>Shop in Our Store</h2>
-  <p>Explore the best deals from our collection.</p>
-
-  <!-- Store items dynamically injected here -->
-  <div id="store-items">
-    <!-- Items will be loaded dynamically here -->
-  </div>
+  <div id="store-details"></div>
+  <h2>Products by this store</h2>
+  <div id="store-products" class="product-grid"></div>
 </div>
 
-<!-- Inject footer -->
+<!-- Footer -->
 <div id="footer"></div>
 <script>
   fetch('footer.html')
@@ -37,6 +32,61 @@
     .then(data => {
       document.getElementById('footer').innerHTML = data;
     });
+</script>
+
+<!-- Dynamic Store Logic -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    const storeId = parseInt(params.get('id'));
+
+    // Load stores
+    fetch('stores.json')
+      .then(res => res.json())
+      .then(stores => {
+        const store = stores.find(s => s.id === storeId);
+        if (!store) {
+          document.getElementById('store-details').innerHTML = '<p>Store not found.</p>';
+          return;
+        }
+
+        document.getElementById('store-details').innerHTML = `
+          <div class="store-header">
+            <img src="${store.logo}" alt="${store.name}" class="store-logo-lg" />
+            <h1>${store.name}</h1>
+            <p>${store.description}</p>
+          </div>
+        `;
+      });
+
+    // Load and filter products
+    fetch('products.json')
+      .then(res => res.json())
+      .then(products => {
+        const storeProducts = products.filter(p => p.storeId === storeId);
+        const productList = document.getElementById('store-products');
+
+        if (storeProducts.length === 0) {
+          productList.innerHTML = "<p>No products found for this store.</p>";
+          return;
+        }
+
+        storeProducts.forEach(product => {
+          const productCard = document.createElement('div');
+          productCard.className = 'product-card';
+          productCard.innerHTML = `
+            <img src="${product.image}" alt="${product.name}" class="product-image">
+            <h3>${product.name}</h3>
+            <p><strong>KES ${product.price}</strong></p>
+            <p>${product.description}</p>
+            <p class="product-meta">
+              <span>Category: ${product.category}</span>
+            </p>
+          `;
+          productList.appendChild(productCard);
+        });
+      });
+  });
 </script>
 
 </body>

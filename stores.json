@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "Swahili Threads",
+    "description": "Authentic East African fashion with a modern twist.",
+    "logo": "assets/images/swahili-threads-logo.png"
+  },
+  {
+    "id": 2,
+    "name": "Bean Republic",
+    "description": "Finest Kenyan coffee direct from Nyeri hills.",
+    "logo": "assets/images/bean-republic-logo.png"
+  },
+  {
+    "id": 3,
+    "name": "Nairobi Crafts",
+    "description": "Handmade jewelry and crafts from Nairobi’s heart.",
+    "logo": "assets/images/nairobi-crafts-logo.png"
+  }
+]

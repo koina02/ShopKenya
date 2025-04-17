@@ -20,9 +20,9 @@
 <!-- Partner Stores Section -->
 <div class="container">
   <h2>Partner Stores</h2>
-  <p>Find all our stores here.</p>
-  
-  <!-- Store listing can be dynamically added here -->
+  <p>Explore amazing local and digital shops partnering with ShopKenya.</p>
+
+  <div id="store-list" class="store-grid"></div>
 </div>
 
 <!-- Inject footer -->
@@ -35,5 +35,34 @@
     });
 </script>
 
+<!-- Store listing script -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    fetch('stores.json')
+      .then(response => response.json())
+      .then(stores => {
+        const storeList = document.getElementById('store-list');
+        stores.forEach(store => {
+          const storeCard = document.createElement('div');
+          storeCard.className = 'store-card';
+
+          storeCard.innerHTML = `
+            <img src="${store.logo}" alt="${store.name}" class="store-logo">
+            <h3>${store.name}</h3>
+            <p>${store.description}</p>
+            <a href="store.html?id=${store.id}" class="store-link">Visit Store</a>
+          `;
+
+          storeList.appendChild(storeCard);
+        });
+      })
+      .catch(error => {
+        console.error('Error loading stores:', error);
+        document.getElementById('store-list').innerHTML = "<p>Failed to load stores.</p>";
+      });
+  });
+</script>
+
 </body>
 </html>
+
