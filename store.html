@@ -1,13 +1,14 @@
-<!-- store.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Store - ShopKenya</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<!-- Inject navbar -->
 <div id="navbar-placeholder"></div>
 <script>
   fetch('navbar.html')
@@ -17,11 +18,26 @@
     });
 </script>
 
+<!-- Store Section -->
 <div class="container">
   <h2>Shop in Our Store</h2>
   <p>Explore the best deals from our collection.</p>
-  <!-- Store items go here -->
+
+  <!-- Store items dynamically injected here -->
+  <div id="store-items">
+    <!-- Items will be loaded dynamically here -->
+  </div>
 </div>
+
+<!-- Inject footer -->
+<div id="footer"></div>
+<script>
+  fetch('footer.html')
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById('footer').innerHTML = data;
+    });
+</script>
 
 </body>
 </html>

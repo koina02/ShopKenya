@@ -9,19 +9,15 @@
 </head>
 <body>
 
-<div id="navbar-placeholder"></div>
-<script>
-  fetch('navbar.html')
-    .then(res => res.text())
-    .then(data => {
-      document.getElementById('navbar-placeholder').innerHTML = data;
-    });
-</script>
+<div id="navbar"></div>
 
 <div class="container">
   <h2>Contact Us</h2>
   <p>Have any questions or feedback? Get in touch with us!</p>
 </div>
 
+<div id="footer"></div>
+
+<script src="layout.js"></script>
 </body>
 </html>

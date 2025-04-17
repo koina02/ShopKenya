@@ -1,4 +1,3 @@
-<!-- cart.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,20 +7,18 @@
 </head>
 <body>
 
-<div id="navbar-placeholder"></div>
-<script>
-  fetch('navbar.html')
-    .then(res => res.text())
-    .then(data => {
-      document.getElementById('navbar-placeholder').innerHTML = data;
-    });
-</script>
+<div id="navbar"></div>
 
 <div class="container">
   <h2>Your Cart</h2>
   <div id="cart-items"></div>
 </div>
 
+<div id="footer"></div>
+
+<script src="layout.js"></script>
 <script src="cart.js"></script>
+
 </body>
 </html>
+

@@ -1,4 +1,3 @@
-<!-- terms.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +8,7 @@
 </head>
 <body>
 
+<!-- Inject navbar -->
 <div id="navbar-placeholder"></div>
 <script>
   fetch('navbar.html')
@@ -18,10 +18,23 @@
     });
 </script>
 
+<!-- Terms and Conditions Section -->
 <div class="container">
   <h2>Terms & Conditions</h2>
   <p>Read our terms and conditions for using ShopKenya services.</p>
+  
+  <!-- Add detailed terms and conditions here -->
 </div>
+
+<!-- Inject footer -->
+<div id="footer"></div>
+<script>
+  fetch('footer.html')
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById('footer').innerHTML = data;
+    });
+</script>
 
 </body>
 </html>

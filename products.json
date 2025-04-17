@@ -1,58 +1,124 @@
-[
-  {
-    "id": 1,
-    "name": "Kikoy Wrap",
-    "price": 1200,
-    "image": "assets/products/kikoy.jpg",
-    "description": "Handwoven Kikoy wrap made in Mombasa.",
-    "category": "Fashion",
-    "store": "Swahili Threads"
-  },
-  {
-    "id": 2,
-    "name": "Kenyan Coffee Pack",
-    "price": 800,
-    "image": "assets/products/coffee.jpg",
-    "description": "Premium AA+ Arabica coffee from Nyeri.",
-    "category": "Food & Beverage",
-    "store": "Bean Republic"
-  },
-  {
-    "id": 3,
-    "name": "Maasai Beaded Bracelet",
-    "price": 400,
-    "image": "assets/products/bracelet.jpg",
-    "description": "Colorful handmade Maasai bracelet.",
-    "category": "Jewelry",
-    "store": "Nairobi Crafts"
-  }
-  {
-    "id": 4,
-    "name": "Kenyan Coffee Beans",
-    "price": 1200,
-    "category": "Food & Drink",
-    "image": "assets/images/coffee.jpg"
-  },
-  {
-    "id": 5,
-    "name": "Chic Ankara Tote Bag",
-    "price": 2500,
-    "category": "Fashion",
-    "image": "assets/images/totebag.jpg"
-  },
-  {
-    "id": 6,
-    "name": "Digital Marketing eBook",
-    "price": 500,
-    "category": "Digital Products",
-    "image": "assets/images/ebook.jpg"
-  },
-  {
-    "id": 7,
-    "name": "Customized Maasai Blanket",
-    "price": 3000,
-    "category": "Fashion",
-    "image": "assets/images/blanket.jpg"
-  }
-]
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ShopKenya - Products</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+<!-- Inject navbar -->
+<div id="navbar-placeholder"></div>
+<script>
+  fetch('navbar.html')
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById('navbar-placeholder').innerHTML = data;
+    });
+</script>
+
+<!-- Products Section -->
+<div class="container">
+  <h2>Our Products</h2>
+  <div id="product-list"></div>
+</div>
+
+<script>
+  // List of products (this will typically come from a database or API)
+  const products = [
+    {
+      "id": 1,
+      "name": "Kikoy Wrap",
+      "price": 1200,
+      "image": "assets/products/kikoy.jpg",
+      "description": "Handwoven Kikoy wrap made in Mombasa.",
+      "category": "Fashion",
+      "store": "Swahili Threads"
+    },
+    {
+      "id": 2,
+      "name": "Kenyan Coffee Pack",
+      "price": 800,
+      "image": "assets/products/coffee.jpg",
+      "description": "Premium AA+ Arabica coffee from Nyeri.",
+      "category": "Food & Beverage",
+      "store": "Bean Republic"
+    },
+    {
+      "id": 3,
+      "name": "Maasai Beaded Bracelet",
+      "price": 400,
+      "image": "assets/products/bracelet.jpg",
+      "description": "Colorful handmade Maasai bracelet.",
+      "category": "Jewelry",
+      "store": "Nairobi Crafts"
+    },
+    {
+      "id": 4,
+      "name": "Kenyan Coffee Beans",
+      "price": 1200,
+      "category": "Food & Drink",
+      "image": "assets/images/coffee.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Chic Ankara Tote Bag",
+      "price": 2500,
+      "category": "Fashion",
+      "image": "assets/images/totebag.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Digital Marketing eBook",
+      "price": 500,
+      "category": "Digital Products",
+      "image": "assets/images/ebook.jpg"
+    },
+    {
+      "id": 7,
+      "name": "Customized Maasai Blanket",
+      "price": 3000,
+      "category": "Fashion",
+      "image": "assets/images/blanket.jpg"
+    }
+  ];
+
+  // Function to render products on the page
+  function displayProducts(products) {
+    const productList = document.getElementById('product-list');
+    products.forEach(product => {
+      const productItem = document.createElement('div');
+      productItem.classList.add('product-item');
+      productItem.innerHTML = `
+        <div class="product-image">
+          <img src="${product.image}" alt="${product.name}" />
+        </div>
+        <div class="product-details">
+          <h3>${product.name}</h3>
+          <p>${product.description || ''}</p>
+          <p><strong>Price: </strong>KSh ${product.price}</p>
+          <p><strong>Category: </strong>${product.category}</p>
+          <p><strong>Store: </strong>${product.store || 'Not Available'}</p>
+        </div>
+      `;
+      productList.appendChild(productItem);
+    });
+  }
+
+  // Call the function to display the products
+  displayProducts(products);
+</script>
+
+<!-- Inject footer -->
+<div id="footer"></div>
+<script>
+  fetch('footer.html')
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById('footer').innerHTML = data;
+    });
+</script>
+
+</body>
+</html>

@@ -1,48 +1,28 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const container = document.getElementById("productsContainer");
-  const searchInput = document.getElementById("searchInput");
-  const categoryFilter = document.getElementById("categoryFilter");
+document.addEventListener('DOMContentLoaded', () => {
+  fetch('products.json')
+    .then(response => response.json())
+    .then(products => {
+      const productList = document.getElementById('product-list');
+      products.forEach(product => {
+        const productCard = document.createElement('div');
+        productCard.className = 'product-card';
 
-  let products = [];
-
-  fetch("products.json")
-    .then(res => res.json())
-    .then(data => {
-      products = data;
-      displayProducts(products);
-    });
-
-  function displayProducts(items) {
-    container.innerHTML = "";
-    if (items.length === 0) {
-      container.innerHTML = "<p>No products found.</p>";
-      return;
-    }
-    items.forEach(product => {
-      container.innerHTML += `
-        <div class="product-card">
-          <img src="${product.image}" alt="${product.name}" />
+        productCard.innerHTML = `
+          <img src="${product.image}" alt="${product.name}" class="product-image">
           <h3>${product.name}</h3>
-          <p>KES ${product.price}</p>
-          <button>Add to Cart</button>
-        </div>
-      `;
+          <p><strong>KES ${product.price}</strong></p>
+          <p>${product.description}</p>
+          <p class="product-meta">
+            <span>Category: ${product.category}</span><br>
+            <span>Store: ${product.store}</span>
+          </p>
+        `;
+
+        productList.appendChild(productCard);
+      });
+    })
+    .catch(error => {
+      console.error('Error loading products:', error);
+      document.getElementById('product-list').innerHTML = "<p>Failed to load products.</p>";
     });
-  }
-
-  searchInput.addEventListener("input", () => {
-    const query = searchInput.value.toLowerCase();
-    const filtered = products.filter(p => p.name.toLowerCase().includes(query));
-    displayProducts(filtered);
-  });
-
-  categoryFilter.addEventListener("change", () => {
-    const category = categoryFilter.value;
-    if (category === "All") {
-      displayProducts(products);
-    } else {
-      const filtered = products.filter(p => p.category === category);
-      displayProducts(filtered);
-    }
-  });
 });
